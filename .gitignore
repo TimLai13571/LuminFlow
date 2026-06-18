@@ -37,3 +37,11 @@ dist-ssr
 # FFmpeg binaries
 ffmpeg/
 ffmpeg.zip
+
+# Demo output & media (generated, not needed for platform runtime)
+server/output/
+*.pptx
+*.docx
+*.mp4
+*.mp3
+*.wav

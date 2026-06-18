@@ -1,8 +1,0 @@
-1
-00:00:25,000 --> 00:00:30,000
-An integrated internal control management platform
-for efficient coordination between auditors and clients.
-
-2
-00:00:30,000 --> 00:00:33,640
-Welcome to the future of audit transparency.

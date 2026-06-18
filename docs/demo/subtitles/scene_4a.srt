@@ -1,9 +1,0 @@
-1
-00:00:00,000 --> 00:00:06,000
-To address the industry challenges of opaque sampling basis
-and inefficient collaboration in internal control audits,
-
-2
-00:00:06,000 --> 00:00:12,636
-our team has independently developed "LuminFlow" --
-a transparent collaboration platform for audit domains.

@@ -3,6 +3,7 @@ import { Plus, Trash2, Play, Copy, CheckCircle, XCircle, Clock } from 'lucide-re
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { useTranslation } from '@/hooks/useTranslation'
+import EmailApiConfig from '@/components/team/EmailApiConfig'
 
 interface ApiEndpoint {
   id: string
@@ -391,6 +392,9 @@ export default function ApiManager() {
           </div>
         </div>
       )}
+
+      {/* Email API Configuration */}
+      <EmailApiConfig />
     </div>
   )
 }

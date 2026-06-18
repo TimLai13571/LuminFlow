@@ -1,0 +1,90 @@
+{
+  "findings": [
+    {
+      "id": "F-001",
+      "controlId": "CTRL-002",
+      "title": "收入证明审核执行缺陷",
+      "description": "抽样测试发现部分信贷审批岗未按规定对收入证明进行交叉验证，仅凭单一收入证明材料即通过审核。涉及分行包括华东区分行和华南区分行。",
+      "severity": "high",
+      "type": "execution",
+      "deviationRate": 20,
+      "samplesTested": 25,
+      "deviationsFound": 5,
+      "impactAssessment": "可能导致信用风险被低估，存在不良贷款生成风险，影响贷款组合整体质量。按当前偏差率推算，涉及贷款余额约2.4亿元。",
+      "remediation": "加强审批岗位培训、增设系统强制校验环节、建立双人复核机制",
+      "status": "open"
+    },
+    {
+      "id": "F-002",
+      "controlId": "CTRL-010",
+      "title": "抵押物评估报告执行偏差",
+      "description": "部分抵押物重估报告未在规定时间窗口内完成，且评估基准日与实际估值日存在较大偏差（超过30天）。涉及华北区分行和西南区分行。",
+      "severity": "medium",
+      "type": "execution",
+      "deviationRate": 12,
+      "samplesTested": 25,
+      "deviationsFound": 3,
+      "impactAssessment": "抵押物价值变动未能及时反映，可能导致抵押率失真，影响风险缓释效果。涉及抵押物估值约1.8亿元。",
+      "remediation": "建立重估时限提醒机制、引入系统自动触发评估流程",
+      "status": "open"
+    },
+    {
+      "id": "F-003",
+      "controlId": "CTRL-003",
+      "title": "征信查询授权执行偏差",
+      "description": "部分征信查询操作在取得正式授权前已执行，授权书日期晚于系统查询记录日期1-3天。涉及华中区分行。",
+      "severity": "medium",
+      "type": "execution",
+      "deviationRate": 8,
+      "samplesTested": 25,
+      "deviationsFound": 2,
+      "impactAssessment": "存在合规风险，可能面临监管处罚和客户投诉。虽未造成实质损失，但反映流程执行不到位。",
+      "remediation": "系统增加授权前置校验，未上传有效授权书前锁定征信查询功能",
+      "status": "open"
+    },
+    {
+      "id": "F-004",
+      "controlId": "CTRL-012",
+      "title": "风险分类调整设计缺陷",
+      "description": "现有分类调整触发规则未充分覆盖行业下行周期下的风险特征，部分贷款分类滞后于实际风险水平。涉及制造业和房地产行业贷款。",
+      "severity": "low",
+      "type": "design",
+      "deviationRate": 4,
+      "samplesTested": 25,
+      "deviationsFound": 1,
+      "impactAssessment": "可能导致风险分类准确度下降，影响拨备计提的充分性。涉及行业贷款余额约5600万元。",
+      "remediation": "优化分类触发规则，纳入宏观经济和行业景气指标作为前瞻性调整依据",
+      "status": "open"
+    }
+  ],
+  "testSummary": {
+    "totalControlsTested": 12,
+    "controlsWithDeficiency": 4,
+    "totalSamplesTested": 300,
+    "totalDeviationsFound": 11,
+    "overallDeviationRate": 3.67,
+    "highSeverityCount": 1,
+    "mediumSeverityCount": 2,
+    "lowSeverityCount": 1,
+    "designDeficiencies": 1,
+    "executionDeficiencies": 3
+  },
+  "branchCoverage": {
+    "totalBranches": 36,
+    "sampledBranches": 12,
+    "branchList": [
+      { "name": "北京分行", "region": "华北", "sampled": true },
+      { "name": "上海分行", "region": "华东", "sampled": true },
+      { "name": "广州分行", "region": "华南", "sampled": true },
+      { "name": "深圳分行", "region": "华南", "sampled": true },
+      { "name": "杭州分行", "region": "华东", "sampled": true },
+      { "name": "成都分行", "region": "西南", "sampled": true },
+      { "name": "武汉分行", "region": "华中", "sampled": true },
+      { "name": "南京分行", "region": "华东", "sampled": true },
+      { "name": "重庆分行", "region": "西南", "sampled": true },
+      { "name": "天津分行", "region": "华北", "sampled": true },
+      { "name": "苏州分行", "region": "华东", "sampled": true },
+      { "name": "西安分行", "region": "西北", "sampled": true }
+    ]
+  }
+}

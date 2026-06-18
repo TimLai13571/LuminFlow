@@ -1,0 +1,121 @@
+[
+  {
+    "id": 1,
+    "component": "control_environment",
+    "name_cn": "诚信与道德价值观",
+    "name_en": "Integrity and Ethical Values",
+    "description": "组织展示对诚信和道德价值观的承诺"
+  },
+  {
+    "id": 2,
+    "component": "control_environment",
+    "name_cn": "董事会独立性与监督",
+    "name_en": "Board Independence and Oversight",
+    "description": "董事会独立于管理层并对内部控制的发展和执行进行监督"
+  },
+  {
+    "id": 3,
+    "component": "control_environment",
+    "name_cn": "组织结构与权责",
+    "name_en": "Structures, Authority and Responsibility",
+    "description": "管理层在董事会监督下建立组织结构、报告线和适当的权责分配"
+  },
+  {
+    "id": 4,
+    "component": "control_environment",
+    "name_cn": "人才胜任能力",
+    "name_en": "Commitment to Competence",
+    "description": "组织承诺吸引、发展和留住具有胜任能力的个人"
+  },
+  {
+    "id": 5,
+    "component": "control_environment",
+    "name_cn": "问责机制",
+    "name_en": "Accountability",
+    "description": "组织通过问责机制推动个人履行内部控制职责"
+  },
+  {
+    "id": 6,
+    "component": "risk_assessment",
+    "name_cn": "明确目标",
+    "name_en": "Specifies Objectives",
+    "description": "组织明确设定目标，以便识别和评估与目标相关的风险"
+  },
+  {
+    "id": 7,
+    "component": "risk_assessment",
+    "name_cn": "识别与分析风险",
+    "name_en": "Identifies and Analyzes Risk",
+    "description": "组织识别实现其目标的相关风险并分析风险作为确定如何管理的基础"
+  },
+  {
+    "id": 8,
+    "component": "risk_assessment",
+    "name_cn": "评估舞弊风险",
+    "name_en": "Assesses Fraud Risk",
+    "description": "组织在评估实现目标的风险时考虑潜在的舞弊风险"
+  },
+  {
+    "id": 9,
+    "component": "risk_assessment",
+    "name_cn": "识别与分析重大变化",
+    "name_en": "Identifies and Analyzes Significant Change",
+    "description": "组织识别和评估可能对内部控制体系产生重大影响的变化"
+  },
+  {
+    "id": 10,
+    "component": "control_activities",
+    "name_cn": "选择控制活动",
+    "name_en": "Selects and Develops Control Activities",
+    "description": "组织选择和制定有助于将实现目标的风险降低到可接受水平的控制活动"
+  },
+  {
+    "id": 11,
+    "component": "control_activities",
+    "name_cn": "技术控制活动",
+    "name_en": "Technology General Controls",
+    "description": "组织选择和制定技术方面的通用控制活动以支持目标的实现"
+  },
+  {
+    "id": 12,
+    "component": "control_activities",
+    "name_cn": "通过政策和程序实施",
+    "name_en": "Deploys Through Policies and Procedures",
+    "description": "组织通过政策和程序将控制活动付诸实施"
+  },
+  {
+    "id": 13,
+    "component": "information_communication",
+    "name_cn": "使用相关信息",
+    "name_en": "Uses Relevant Information",
+    "description": "组织获取或生成并使用相关且有质量的信息以支持内部控制的运行"
+  },
+  {
+    "id": 14,
+    "component": "information_communication",
+    "name_cn": "内部沟通",
+    "name_en": "Communicates Internally",
+    "description": "组织在内部沟通必要的信息以支持内部控制的运行"
+  },
+  {
+    "id": 15,
+    "component": "information_communication",
+    "name_cn": "外部沟通",
+    "name_en": "Communicates Externally",
+    "description": "组织就影响内部控制运行的事项与外部各方进行沟通"
+  },
+  {
+    "id": 16,
+    "component": "monitoring",
+    "name_cn": "持续和/或独立评估",
+    "name_en": "Conducts Ongoing and/or Separate Evaluations",
+    "description": "组织选择、制定和执行持续和/或独立评估以确定内部控制各要素是否存在并运行"
+  },
+  {
+    "id": 17,
+    "component": "monitoring",
+    "name_cn": "评估与沟通缺陷",
+    "name_en": "Evaluates and Communicates Deficiencies",
+    "description": "组织及时评估内部控制缺陷并向负责采取纠正措施的各方进行沟通"
+  }
+]

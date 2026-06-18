@@ -1,0 +1,128 @@
+# LuminFlow Seedance 2.0 Video Scene Prompts
+# All prompts in English for Seedance optimal understanding.
+# Reference images referenced via @Image1 / @Image2 tokens in scene builder code.
+
+characters:
+  auditor:
+    id: character_a
+    description: >
+      East Asian male, 30–35 years old, short neat black hair, thin-rimmed silver glasses,
+      clean-shaven, refined facial features. Wearing dark gray suit jacket, white dress shirt,
+      simple navy tie. Professional, earnest, restrained demeanor. Gestures are minimal
+      and controlled — East Asian corporate etiquette.
+  client:
+    id: character_b
+    description: >
+      East Asian male, 40–45 years old, short dark hair, mature face with slight age lines,
+      no glasses. Wearing charcoal business suit, light blue shirt. Impatient but restrained
+      expression, subtle frown. Hand gestures are measured — slight head shake, controlled
+      hand wave, no exaggerated movements. East Asian corporate etiquette.
+
+environment:
+  description: >
+    Bright, minimalist Asian corporate meeting room. Beige-white walls, simple venetian blinds.
+    Dark solid wood conference table. Orderly stacks of paper audit working papers,
+    KPMG KAEG manual (cover visible), handwritten RCM spreadsheets, printed Excel risk matrices.
+    Tea cups placed neatly. Natural daylight mixed with indoor lighting. Clean, orderly,
+    slightly subdued atmosphere. No dramatic shadows.
+
+scenes:
+  - scene_id: scene_1
+    order: 1
+    scene_type: dialogue_two_shot
+    duration: 12
+    generate_audio: true
+    reference_images: [character_a, character_b]
+    prompt: >
+      Asian corporate meeting room, bright and minimalist. White-beige walls, venetian blinds
+      with sunlight stripes. Two men sit across a dark wood conference table.
+      The auditor (early 30s, East Asian, short black hair, thin-rimmed glasses, dark gray suit)
+      spreads paper audit working papers on the table with a concerned but professional expression.
+      The client (mid-40s, East Asian, dark hair, charcoal suit) frowns while flipping through
+      a PBC request list, finger pointing at the sampling quantity column.
+      Both visible in medium shot, facing each other.
+      KPMG KAEG manual visible on table. Handwritten RCM spreadsheets with annotations.
+      Natural daylight through blinds creates orderly stripe patterns.
+      Subdued atmosphere, restrained East Asian corporate etiquette.
+      No exaggerated gestures. Both characters maintain professional composure.
+    subtitles_text: |
+      This PBC list is impossible. You're asking for every single loan approval from the past year?
+      Our team simply doesn't have the bandwidth to pull all these documents.
+      And this sampling count — 57 approvals? That's excessive. We've never been asked for this many.
+
+  - scene_id: scene_2a
+    order: 2
+    scene_type: closeup
+    duration: 8
+    generate_audio: true
+    reference_images: [character_a]
+    prompt: >
+      Close-up shot of the auditor (same East Asian male, 30s, thin-rimmed glasses, dark gray suit).
+      He flips through a KAEG audit manual and a handwritten RCM spreadsheet on the table.
+      His expression shows difficulty but remains professionally restrained —
+      slight furrowed brow, focused eyes, measured hand gestures.
+      Papers with visible handwritten annotations and audit notes.
+      Warm office lighting, shallow depth of field blurring the meeting room background.
+      Asian corporate meeting room setting. Gestures are minimal and professional.
+    subtitles_text: |
+      I understand your concern. However, under COSO 2013 Framework, we need to validate
+      the completeness of the control sample across all key business cycles.
+      The KAEG manual requires us to test all material approval types.
+
+  - scene_id: scene_2b
+    order: 3
+    scene_type: closeup
+    duration: 8
+    generate_audio: true
+    reference_images: [character_b]
+    prompt: >
+      Close-up shot of the client (same East Asian male, mid-40s, dark hair, charcoal suit).
+      He shakes his head and waves his hand slightly — restrained, not exaggerated,
+      reflecting East Asian communication norms of subtle disapproval.
+      His expression shows dissatisfaction but remains composed and professional.
+      A cluttered Excel risk matrix spreadsheet is visible on the table before him,
+      with red-highlighted cells. Warm office lighting, shallow depth of field.
+      Asian corporate meeting room. The gesture is minimal — a subtle hand wave,
+      not dramatic. Professional distance maintained.
+    subtitles_text: |
+      But 57 samples? Even for a full-year audit, that seems unreasonable.
+      (Shaking head slightly) We've worked with other audit firms before,
+      and none of them asked for this level of sampling detail.
+
+  - scene_id: scene_3
+    order: 4
+    scene_type: atmospheric
+    duration: 10
+    generate_audio: false
+    reference_images: []
+    prompt: >
+      Slow dolly-out wide shot. The two men sit across the conference table in silence —
+      the auditor and client facing each other with stacks of audit working papers, manuals,
+      and spreadsheets between them. Sunlight through venetian blinds creates stripe patterns
+      across the table and papers. Cups of tea sit neatly beside the documents.
+      The image gradually darkens and softens slightly, transitioning to a more
+      contemplative atmospheric tone. Clean, orderly East Asian corporate meeting room.
+      No dramatic lighting, natural office ambiance. Professional distance.
+      Subtle camera movement — slow, deliberate pull-back.
+    subtitles_text: |
+      But what if there was a smarter way?
+
+  - scene_id: scene_4
+    order: 5
+    scene_type: brand_reveal
+    duration: 12
+    generate_audio: false
+    reference_images: []
+    prompt: >
+      Dark screen. A sharp blue beam of light cuts through the darkness from left to right,
+      elegant and precise. The beam expands and transforms into glowing text —
+      the word 'LuminFlow' appears full-screen in modern clean sans-serif typography,
+      radiating soft blue light with subtle white highlights.
+      Tagline fades in below: 'Audit Transparency, Redefined.'
+      Clean, minimalist tech aesthetic. The text stabilizes with a gentle glow effect.
+      Professional corporate branding reveal, no clutter, elegant and impactful.
+      Deep navy background, electric blue beam and text glow. High-end visual quality.
+    subtitles_text: |
+      LuminFlow.
+      Audit Transparency, Redefined.
+      Intelligent sampling. Real-time collaboration. Complete audit visibility.

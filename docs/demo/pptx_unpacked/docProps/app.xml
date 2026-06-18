@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ascii"?>
+<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+  <Template/>
+  <TotalTime>1130</TotalTime>
+  <Words>489</Words>
+  <Application>Microsoft Office PowerPoint</Application>
+  <PresentationFormat>&#23485;&#23631;</PresentationFormat>
+  <Paragraphs>57</Paragraphs>
+  <Slides>5</Slides>
+  <Notes>0</Notes>
+  <HiddenSlides>0</HiddenSlides>
+  <MMClips>0</MMClips>
+  <ScaleCrop>false</ScaleCrop>
+  <HeadingPairs>
+    <vt:vector size="6" baseType="variant">
+      <vt:variant>
+        <vt:lpstr>&#24050;&#29992;&#30340;&#23383;&#20307;</vt:lpstr>
+      </vt:variant>
+      <vt:variant>
+        <vt:i4>3</vt:i4>
+      </vt:variant>
+      <vt:variant>
+        <vt:lpstr>&#20027;&#39064;</vt:lpstr>
+      </vt:variant>
+      <vt:variant>
+        <vt:i4>1</vt:i4>
+      </vt:variant>
+      <vt:variant>
+        <vt:lpstr>&#24187;&#28783;&#29255;&#26631;&#39064;</vt:lpstr>
+      </vt:variant>
+      <vt:variant>
+        <vt:i4>5</vt:i4>
+      </vt:variant>
+    </vt:vector>
+  </HeadingPairs>
+  <TitlesOfParts>
+    <vt:vector size="9" baseType="lpstr">
+      <vt:lpstr>KPMG Bold</vt:lpstr>
+      <vt:lpstr>Aptos</vt:lpstr>
+      <vt:lpstr>Arial</vt:lpstr>
+      <vt:lpstr>KPMG Widescreen [16:9] Feb 2022</vt:lpstr>
+      <vt:lpstr>LuminFlow AI-Driven Client Audit Visibility &amp; Sampling Transparency Global Audit Hackathon 2026 &#8212; Challenge 2 | June 2026   China Team 14</vt:lpstr>
+      <vt:lpstr>The Challenge &amp; Our Solution</vt:lpstr>
+      <vt:lpstr>Three-Phase Audit Workflow Architecture</vt:lpstr>
+      <vt:lpstr>Key Capabilities Addressing Challenge 2</vt:lpstr>
+      <vt:lpstr>Technical Architecture &amp; Innovation</vt:lpstr>
+    </vt:vector>
+  </TitlesOfParts>
+  <Company>KPMG</Company>
+  <LinksUpToDate>false</LinksUpToDate>
+  <SharedDoc>false</SharedDoc>
+  <HyperlinksChanged>false</HyperlinksChanged>
+  <AppVersion>16.0000</AppVersion>
+</Properties>

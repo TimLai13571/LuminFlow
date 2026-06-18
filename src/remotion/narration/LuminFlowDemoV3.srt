@@ -1,0 +1,202 @@
+1
+00:00:00,000 --> 00:00:03,000
+Welcome to LuminFlow.
+
+2
+00:00:03,000 --> 00:00:06,000
+An AI-powered audit transparency platform,
+built on the COSO 2013 framework.
+
+3
+00:00:06,000 --> 00:00:11,000
+The Dashboard delivers real-time visibility
+into audit progress and control coverage.
+
+4
+00:00:11,000 --> 00:00:15,000
+Track PBC completion and aggregated risk
+scores across the engagement.
+
+5
+00:00:15,000 --> 00:00:20,000
+Role-based views adapt instantly for
+Auditors, Partners, and CFOs.
+
+6
+00:00:20,000 --> 00:00:25,000
+A live heatmap, stepper, and activity
+timeline keep every stakeholder aligned.
+
+7
+00:00:25,000 --> 00:00:30,000
+TraceMap visualizes the COSO 2013
+three-level objective hierarchy.
+
+8
+00:00:30,000 --> 00:00:34,000
+An interactive audit tree connects
+objectives, risks, and controls.
+
+9
+00:00:34,000 --> 00:00:39,000
+AI Insight decomposes strategic goals
+into testable, traceable controls.
+
+10
+00:00:39,000 --> 00:00:43,000
+A radar chart benchmarks coverage
+across multiple audit dimensions.
+
+11
+00:00:43,000 --> 00:00:48,000
+HeatLens unifies the full risk landscape
+with the Risk Control Matrix.
+
+12
+00:00:48,000 --> 00:00:53,000
+Tune weights for inherent risk and
+control effectiveness in real time.
+
+13
+00:00:53,000 --> 00:00:58,000
+Multi-factor scoring captures the true
+residual exposure no single metric can.
+
+14
+00:00:58,000 --> 00:01:03,000
+SampleLens recommends optimal sample
+sizes through AI-driven analysis.
+
+15
+00:01:03,000 --> 00:01:07,000
+Supports monetary unit and attribute
+sampling methodologies.
+
+16
+00:01:07,000 --> 00:01:12,000
+Tune confidence, tolerable, and expected
+deviation rates with full transparency.
+
+17
+00:01:12,000 --> 00:01:16,000
+Event-driven reinforcement expands
+samples when control risk rises.
+
+18
+00:01:16,000 --> 00:01:21,000
+PBCView centralizes Provided-By-Client
+document management end to end.
+
+19
+00:01:21,000 --> 00:01:25,000
+AI auto-generates tailored PBC lists
+by industry and audit process.
+
+20
+00:01:25,000 --> 00:01:29,000
+Overdue alerts and reminder emails
+accelerate every client response.
+
+21
+00:01:29,000 --> 00:01:33,000
+Progress tracked by control area
+streamlines auditor-client exchange.
+
+22
+00:01:33,000 --> 00:01:38,000
+NarrativeLens turns raw findings into
+structured narratives via generative AI.
+
+23
+00:01:38,000 --> 00:01:42,000
+Key points are extracted automatically
+and prepared for review.
+
+24
+00:01:42,000 --> 00:01:46,000
+A three-step flow routes drafts through
+Submit, Manager, and Partner sign-off.
+
+25
+00:01:46,000 --> 00:01:50,000
+Human-AI collaboration safeguards
+every narrative's audit quality.
+
+26
+00:01:50,000 --> 00:01:55,000
+ImpactSimulator models the outcome
+of any control deficiency.
+
+27
+00:01:55,000 --> 00:01:59,000
+A force-directed graph traces how risk
+propagates through connected nodes.
+
+28
+00:01:59,000 --> 00:02:04,000
+Quantify potential financial loss
+and regulatory penalty exposure.
+
+29
+00:02:04,000 --> 00:02:08,000
+AI ranks remediation priority
+by projected business impact.
+
+30
+00:02:08,000 --> 00:02:13,000
+TeamPanel governs a multi-role
+permission matrix for the engagement.
+
+31
+00:02:13,000 --> 00:02:17,000
+From Audit Manager to Client Liaison,
+visibility is scoped per dataset.
+
+32
+00:02:17,000 --> 00:02:21,000
+The AI assistant answers natural-language
+audit queries instantly.
+
+33
+00:02:21,000 --> 00:02:25,000
+Analyze risks, generate sampling plans,
+or explain COSO principles on demand.
+
+34
+00:02:25,000 --> 00:02:28,000
+API data integrations are managed
+from one unified console.
+
+35
+00:02:28,000 --> 00:02:33,000
+Every module connects into one
+continuous, end-to-end workflow.
+
+36
+00:02:33,000 --> 00:02:37,000
+Data flows across planning, execution,
+and assessment without friction.
+
+37
+00:02:37,000 --> 00:02:42,000
+RESTful APIs open LuminFlow to ERP,
+GRC, and external audit systems.
+
+38
+00:02:42,000 --> 00:02:47,000
+From planning to sign-off, LuminFlow
+unifies every audit signal.
+
+39
+00:02:47,000 --> 00:02:51,000
+Faster cycles, sharper insight,
+and defensible evidence at every step.
+
+40
+00:02:51,000 --> 00:02:55,000
+Audit transparency, redefined.
+
+41
+00:02:55,000 --> 00:03:00,000
+Step into LuminFlow and discover
+intelligent assurance in action.

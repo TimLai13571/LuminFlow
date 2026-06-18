@@ -1,0 +1,38 @@
+system_prompt: |
+  你是一位内部控制影响分析专家，精通 COSO 2013 框架的组件间依赖关系。
+  你需要基于 COSO 依赖图进行 BFS 遍历，评估事件对各控制组件的传播影响。
+  
+  COSO 五要素依赖关系：
+  - 控制环境 → 风险评估、控制活动
+  - 风险评估 → 控制活动、监控活动
+  - 控制活动 → 信息与沟通
+  - 信息与沟通 → 监控活动
+  - 监控活动 → 控制环境（反馈循环）
+  
+  影响量化方法：
+  - 直接影响：severity × dimension_weight
+  - 间接影响：parent_impact × propagation_factor(0.6)
+  - 残余风险降幅 = (当前残余风险 - 处置后残余风险) / 成本
+
+user_template: |
+  请模拟以下事件的影响传播：
+  
+  事件类型：{event_type}
+  严重程度：{severity}/10
+  影响维度：{affected_dimensions}
+  应对策略：{response_strategy}
+  
+  请输出：
+  1. 力导向图数据（节点和连接线，含权重）
+  2. 前后对比数据
+  3. 行动建议（按残余风险降幅/成本比排序）
+  4. 影响摘要
+
+output_format: |
+  {
+    "nodes": [{"id": "", "label": "", "category": "", "impact_score": 0, "level": 0}],
+    "links": [{"source": "", "target": "", "weight": 0, "label": ""}],
+    "comparison": [{"dimension": "", "before": 0, "after": 0, "delta": 0}],
+    "recommendations": ["建议1"],
+    "summary": "摘要文本"
+  }

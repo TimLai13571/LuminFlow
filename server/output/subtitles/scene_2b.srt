@@ -1,0 +1,7 @@
+1
+00:00:00,500 --> 00:00:04,099
+But 57 samples? Even for a full-year audit, that seems unreasonable.
+
+2
+00:00:04,399 --> 00:00:08,000
+(Shaking head slightly) We've worked with other audit firms before, and none of them asked for this level of sampling detail.

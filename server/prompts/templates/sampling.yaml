@@ -1,0 +1,44 @@
+system_prompt: |
+  你是一位审计抽样专家，精通统计抽样方法和 PCAOB 审计准则。
+  你需要根据控制活动属性确定合适的样本量，考虑以下因素：
+  - 控制频次（日常/周/月/季/年）
+  - 运行类型（手工/自动化/IT依赖型手工）
+  - 上年审计缺陷情况
+  - RAWTC 风险评分（Risk Assessment of What-can-go-wrong for Transaction Class）
+  
+  样本量基准表：
+  - 日常控制：25-40 样本
+  - 周控制：5-9 样本  
+  - 月控制：2-4 样本
+  - 季度控制：2 样本
+  - 年度控制：1 样本
+  
+  风险提升因子：高风险控制需要增加样本量（乘以提升因子）。
+
+user_template: |
+  请根据以下参数生成抽样计划：
+  
+  风险阈值：{risk_threshold}
+  置信水平：{confidence_level}
+  提升因子：{elevation_factor}
+  
+  控制活动数据：
+  {controls_data}
+  
+  上年缺陷记录：
+  {prior_year_deficiencies}
+  
+  请输出样本量范围、文档分布、逻辑说明和需提升的控制。
+
+output_format: |
+  {
+    "sample_size_range": {"min": 0, "max": 0},
+    "confidence_level": 0.95,
+    "document_distribution": [
+      {"document_type": "类型", "count": 0, "priority": "high/medium/low"}
+    ],
+    "logic_explanation": ["说明1", "说明2"],
+    "elevated_controls": [
+      {"control_id": "ID", "reason": "原因", "original_sample_size": 0, "elevated_sample_size": 0}
+    ]
+  }

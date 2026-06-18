@@ -1,0 +1,11 @@
+1
+00:00:00,500 --> 00:00:02,800
+I understand your concern. However, under COSO 2013 Framework, we need to validate
+
+2
+00:00:03,100 --> 00:00:05,400
+the completeness of the control sample across all key business cycles.
+
+3
+00:00:05,700 --> 00:00:08,000
+The KAEG manual requires us to test all material approval types.

@@ -1,0 +1,264 @@
+=== PARA 1 [STYLE:Title] ===
+LuminFlow
+
+=== PARA 2 [STYLE:Subtitle Style] ===
+AI-Driven Client Audit Visibility & Sampling Transparency
+
+=== PARA 4 [STYLE:Tagline Style] ===
+Global Audit Hackathon 2026 — Challenge 2 Submission
+
+=== PARA 6 [STYLE:Normal] ===
+Transforming Fragmented Audit Updates into a Dynamic, Insight-Driven Experience
+
+=== PARA 8 [STYLE:Normal] ===
+An AI-enabled platform that consolidates, interprets, and communicates
+
+=== PARA 9 [STYLE:Normal] ===
+audit status and sampling information to clients in real-time,
+
+=== PARA 10 [STYLE:Normal] ===
+built on the COSO 2013 Internal Control Framework.
+
+=== PARA 12 [STYLE:Normal] ===
+June 2026
+
+=== PARA 14 [STYLE:Heading 1] ===
+1. Project Background & Challenge Response
+
+=== PARA 15 [STYLE:Heading 2] ===
+1.1 The Challenge
+
+=== PARA 16 [STYLE:Normal] ===
+Clients increasingly expect clear, timely, and meaningful visibility into how audit requests, data submissions, and sampling activities are linked directly to audit objectives and outcomes. The current experience is fragmented:
+
+=== PARA 17 [STYLE:List Paragraph] ===
+Information is spread across multiple media and channels
+
+=== PARA 18 [STYLE:List Paragraph] ===
+Updates arrive too late to prevent wider impact
+
+=== PARA 19 [STYLE:List Paragraph] ===
+Limited transparency and context hinder understanding of progress and delays
+
+=== PARA 20 [STYLE:List Paragraph] ===
+Clients lack a unified view connecting objectives, risks, controls, testing, and reporting
+
+=== PARA 21 [STYLE:Heading 2] ===
+1.2 Our Solution — LuminFlow
+
+=== PARA 22 [STYLE:Normal] ===
+LuminFlow is an intelligent audit transparency platform that addresses all six Challenge 2 priorities through an integrated, AI-powered visualization framework:
+
+=== PARA 23 [STYLE:List Paragraph] ===
+Integrated Visualization Framework: Connects all audit aspects — risk assessment, controls, substantive testing, and reporting — to specific audit objectives through an interactive tree map (AuditTreeD3) and COSO radar chart.
+
+=== PARA 24 [STYLE:List Paragraph] ===
+Pre-Request Visibility: AI-powered SampleLens indicates sample size ranges (x-y) BEFORE selection, with document type predictions (POs, invoices, contracts) and methodology explanations.
+
+=== PARA 25 [STYLE:List Paragraph] ===
+Comprehensive KPI Integration: Dashboard aggregates KPIs, risk heatmaps, status distributions, and activity timelines, giving clients an upfront view of anticipated requests across all audit objectives.
+
+=== PARA 26 [STYLE:List Paragraph] ===
+Dual Progress Visualization: Tracks both auditor progress through the audit lifecycle AND client PBC submission progress, with overdue alerts and real-time status dashboards.
+
+=== PARA 27 [STYLE:List Paragraph] ===
+Impact Analysis Engine: ImpactSimulator uses Internal Audit Methodology graph BFS propagation to quantify the ripple effect of changes or delays, with AI-recommended next steps and mitigation strategies.
+
+=== PARA 28 [STYLE:List Paragraph] ===
+Role-Based Visibility Control: VisibilityPanel enables engagement teams to manage what is visible to each stakeholder (Partner, CFO, Auditor, Finance Clerk) with fine-grained data filtering.
+
+=== PARA 30 [STYLE:Heading 1] ===
+2. Integrated Visualization Framework & AI Pipelines
+
+=== PARA 31 [STYLE:Heading 2] ===
+2.1 Three-Phase Audit Workflow Architecture
+
+=== PARA 32 [STYLE:Normal] ===
+LuminFlow organizes the audit lifecycle into three distinct phases, each with purpose-built visualization tools:
+
+=== PARA 33 [STYLE:Heading 3] ===
+Phase 1 — Planning
+
+=== PARA 34 [STYLE:List Paragraph] ===
+TraceMap: Interactive audit process full-linkage map showing objective-to-procedure relationships
+
+=== PARA 35 [STYLE:List Paragraph] ===
+HeatLens: Risk heatmap with COSO five-dimension scoring, factor breakdown, and risk scoring panel
+
+=== PARA 36 [STYLE:Heading 3] ===
+Phase 2 — Execution
+
+=== PARA 37 [STYLE:List Paragraph] ===
+SampleLens: AI-powered sampling preview with sample size recommendation, document distribution sunburst chart, methodology explanation, and historical trend analysis
+
+=== PARA 38 [STYLE:List Paragraph] ===
+PBCView: PBC request tracking with auto-generation, overdue alerts, progress tracker, and email draft automation
+
+=== PARA 39 [STYLE:Heading 3] ===
+Phase 3 — Evaluation and Communication
+
+=== PARA 40 [STYLE:List Paragraph] ===
+NarrativeLens: Audience-adapted narrative generator producing differentiated communications for Client, Internal Audit, and IT stakeholders
+
+=== PARA 41 [STYLE:List Paragraph] ===
+ImpactSimulator: Internal Audit dependency graph BFS propagation model with force-directed visualization, before/after comparison tables, and AI recommendations
+
+=== PARA 42 [STYLE:Heading 2] ===
+2.2 Four AI Pipelines
+
+=== PARA 43 [STYLE:Normal] ===
+Each AI pipeline follows a consistent architecture: YAML template loading → LLM invocation (eg.DeepSeek) → structured JSON parsing → Pydantic validation. All pipelines feature automatic Mock fallback for zero-configuration demonstrations.
+
+=== PARA 44 [STYLE:List Paragraph] ===
+Risk Analyzer — COSO-based risk assessment with residual risk scoring across five domains. Currently Currently uses DeepSeek LLM (temperature 0.3) for stable, consistent output.
+
+=== PARA 45 [STYLE:List Paragraph] ===
+Sample Recommender — Statistical sampling engine incorporating control frequency, operating type multipliers, historical deficiencies, and RAWTC risk scoring. Conditional branch logic: low-risk scenarios skip LLM for simplified results. Currently Currently uses DeepSeek LLM (temperature 0.2) for precision.
+
+=== PARA 46 [STYLE:List Paragraph] ===
+Impact Simulator — BFS propagation on Internal Audit Methodology graph (propagation factor 0.6) with mitigation strategy comparison (mitigate/accept/transfer/avoid). Currently uses DeepSeek LLM (temperature 0.3) for structured graph data.
+
+=== PARA 47 [STYLE:List Paragraph] ===
+Narrative Generator — Audience-adapted communication engine transforming technical findings into differentiated narratives. Currently uses DeepSeek LLM (temperature 0.5) balancing creativity with controllability.
+
+=== PARA 49 [STYLE:Heading 1] ===
+3. Key Capabilities Addressing Challenge 2 Deliverables
+
+=== PARA 50 [STYLE:Heading 2] ===
+3.1 Objective-to-Evidence Traceability
+
+=== PARA 51 [STYLE:Normal] ===
+The ObjectivePage provides complete transparency from audit objectives down to individual test procedures:
+
+=== PARA 52 [STYLE:List Paragraph] ===
+AuditTreeD3: Interactive D3 tree visualization connecting objectives → risks → controls → test procedures with collapsible nodes, search highlighting, and status color mapping
+
+=== PARA 53 [STYLE:List Paragraph] ===
+RadarChart: ECharts-based multi-dimensional assessment comparing current period vs. prior period vs. industry benchmark across COSO dimensions
+
+=== PARA 54 [STYLE:List Paragraph] ===
+DualProgress: Side-by-side progress tracking for audit procedures and client PBC submissions, with gap warnings and pulse animations
+
+=== PARA 55 [STYLE:Heading 2] ===
+3.2 Sampling Transparency & Pre-Request Visibility
+
+=== PARA 56 [STYLE:Normal] ===
+SampleLens revolutionizes how sampling information is communicated to clients by providing visibility BEFORE sample selection occurs:
+
+=== PARA 57 [STYLE:List Paragraph] ===
+AI-Generated Sample Ranges: Sample size intervals with confidence levels, calculated from control frequency, operating type, prior deficiencies, and RAWTC scores
+
+=== PARA 58 [STYLE:List Paragraph] ===
+Document Type Predictions: AI predicts required document distribution (purchase orders, invoices, contracts) with priority levels
+
+=== PARA 59 [STYLE:List Paragraph] ===
+Methodology Transparency: AILogicExplainer details the statistical basis (INTL standards), calculation factors, and AI recommendation logic in plain language
+
+=== PARA 60 [STYLE:List Paragraph] ===
+Interactive Visualizations: Sunburst chart for categorical distribution and historical trend bar charts provide intuitive data exploration
+
+=== PARA 61 [STYLE:Heading 2] ===
+3.3 Impact Simulation & Delay Analysis
+
+=== PARA 62 [STYLE:Normal] ===
+The ImpactSimulator provides real-time, AI-powered impact analysis when changes or delays occur:
+
+=== PARA 63 [STYLE:List Paragraph] ===
+ForceGraphD3: D3 force-directed graph showing COSO inter-dependency propagation with draggable nodes, hover highlighting, and pulse animations on source nodes
+
+=== PARA 64 [STYLE:List Paragraph] ===
+ComparisonTable: Before/after impact comparison across dimensions with delta calculations, incorporating mitigation strategy adjustments
+
+=== PARA 65 [STYLE:List Paragraph] ===
+AI Recommendations: Context-aware suggested next steps generated by the AI engine based on event type, severity (1-10), and affected COSO dimensions
+
+=== PARA 66 [STYLE:Heading 2] ===
+3.4 Multi-Stakeholder Communication
+
+=== PARA 67 [STYLE:Normal] ===
+NarrativeLens generates differentiated communications tailored to each stakeholder's information needs:
+
+=== PARA 68 [STYLE:List Paragraph] ===
+CFO View: Financial impact focus with quantitative analysis and business implications
+
+=== PARA 69 [STYLE:List Paragraph] ===
+Internal Audit View: Control deficiency focus with remediation recommendations and residual risk assessment
+
+=== PARA 70 [STYLE:List Paragraph] ===
+IT View: System implication focus with technical dependency mapping and configuration impacts
+
+=== PARA 71 [STYLE:List Paragraph] ===
+Approval Workflow: NarrativeApprovalFlow with publish controls and the VisibilityPanel for engagement team oversight — teams approve what clients see
+
+=== PARA 73 [STYLE:Heading 1] ===
+4. Technical Architecture, Tools & Prompt Engineering
+
+=== PARA 74 [STYLE:Heading 2] ===
+4.1 System Architecture
+
+=== PARA 75 [STYLE:Normal] ===
+LuminFlow employs a dual-stack architecture with frontend-backend separation communicating via HTTP RESTful APIs:
+
+=== PARA 76 [STYLE:List Paragraph] ===
+Frontend: React 18 + TypeScript + Vite (port 5173). Component-Store-Service MVC pattern with Zustand state management, TanStack React Query for data caching, and role-based route guards.
+
+=== PARA 77 [STYLE:List Paragraph] ===
+Backend: FastAPI + Python 3.x (port 8000). Route-Engine-Model layered architecture with SSE streaming for real-time AI chat, async HTTP clients, and graceful Mock degradation.
+
+=== PARA 78 [STYLE:List Paragraph] ===
+Visualization: D3.js for force-directed graphs and tree maps, ECharts for radar/heatmap/sunburst charts, Recharts for trend analysis.
+
+=== PARA 79 [STYLE:List Paragraph] ===
+Internationalization: Custom i18n system (Zustand + localStorage) with zero external dependencies, supporting Chinese/English bilingual UI and AI-generated content.
+
+=== PARA 80 [STYLE:Heading 2] ===
+4.2 Tools & Capabilities
+
+=== PARA 82 [STYLE:Heading 2] ===
+4.3 Prompt & Context Engineering
+
+=== PARA 83 [STYLE:Normal] ===
+LuminFlow's AI pipelines are driven by a modular prompt engineering system:
+
+=== PARA 84 [STYLE:List Paragraph] ===
+YAML Template Architecture: Each AI pipeline has a dedicated YAML template with separation of system_prompt (role definition), user_template (dynamic data injection), and output_format (structured JSON schema). Templates are version-controlled and independent.
+
+=== PARA 85 [STYLE:List Paragraph] ===
+Context Injection: Chat requests automatically append the user's role, current page context, and selected data elements, enabling the AI to provide contextually relevant responses without manual prompt engineering.
+
+=== PARA 86 [STYLE:List Paragraph] ===
+Audience Adaptation: Narrative prompts instruct the LLM to rephrase technical audit findings for three personas: CFO (financial impact, business risk), Internal Audit (control effectiveness, remediation steps), IT (system dependencies, configuration changes).
+
+=== PARA 87 [STYLE:List Paragraph] ===
+Temperature Tuning: 0.2 for sampling (precision-critical calculations), 0.3 for risk analysis and impact simulation (stability), 0.5 for narrative generation (creativity within structure).
+
+=== PARA 88 [STYLE:List Paragraph] ===
+Structured Output Enforcement: All LLM responses are required in JSON format matching Pydantic models. Failed parsing triggers automatic fallback to realistic mock data, ensuring the UI never breaks.
+
+=== PARA 89 [STYLE:List Paragraph] ===
+Graceful Degradation: Every AI pipeline includes a comprehensive mock fallback with professionally curated sample data. This enables complete platform demonstrations without any API key configuration.
+
+=== PARA 90 [STYLE:Heading 2] ===
+4.4 Scope & Assumptions
+
+=== PARA 91 [STYLE:Normal] ===
+This prototype demonstrates the concept using the following scope:
+
+=== PARA 92 [STYLE:List Paragraph] ===
+Data: Synthetic test data reflecting realistic bank lending ICFR audit patterns. No client-identifiable information is used.
+
+=== PARA 93 [STYLE:List Paragraph] ===
+Audit Areas: Three audit objectives demonstrated with full COSO control mapping, designed for modular scaling to additional areas.
+
+=== PARA 94 [STYLE:List Paragraph] ===
+Roles: Four stakeholder personas (Partner, CFO, Auditor, Finance Clerk) with distinct visibility controls and tailored AI outputs.
+
+=== PARA 95 [STYLE:List Paragraph] ===
+Infrastructure: Zero external database dependency — all data is static JSON or Mock-generated for rapid prototyping. Backend can be extended with PostgreSQL for production.
+
+=== PARA 96 [STYLE:List Paragraph] ===
+Scalability: Modular component architecture allows independent extension of each AI pipeline and visualization module. New audit areas can be added through configuration files.
+
+=== PARA 98 [STYLE:Normal] ===
+— End of Submission —
+

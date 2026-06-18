@@ -1,0 +1,3 @@
+# Placeholder so Git tracks the narration audio output directory.
+# Generated mp3 files (one per segment id) will be placed here by:
+#   python server/scripts/generate_narration_audio.py

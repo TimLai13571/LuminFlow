@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+httpx
+pydantic>=2.0
+python-dotenv
+pyyaml
+sse-starlette
+tenacity>=8.0
+aiofiles>=23.0

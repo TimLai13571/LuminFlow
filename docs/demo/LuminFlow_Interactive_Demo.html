@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LuminFlow Interactive Consultant Demo</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300338D'/%3E%3Cpath d='M8 22h16v3H8zM8 7h4v12H8zM14 11h4v8h-4zM20 9h4v10h-4z' fill='white'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --brand-primary: #00338d;
+      --brand-interactive: #1e49e2;
+      --brand-light: #e8edf5;
+      --success: #009a44;
+      --warning: #ff6b00;
+      --danger: #d32f2f;
+      --pending: #757575;
+      --gold: #c5a04e;
+      --page: #fafbfc;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #4a4a5a;
+      --soft: #8c8c9a;
+      --border: #e5e7eb;
+      --shadow-1: 0 1px 3px rgba(0, 0, 0, .08);
+      --shadow-2: 0 4px 12px rgba(0, 0, 0, .12);
+      --radius-card: 8px;
+      --radius-btn: 6px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, PingFang SC, Microsoft YaHei, system-ui, sans-serif;
+      color: var(--text);
+      background: var(--page);
+      line-height: 1.6;
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: var(--brand-primary);
+      color: #fff;
+      box-shadow: var(--shadow-2);
+    }
+    .brand { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 20px; letter-spacing: .02em; }
+    .crumb { color: rgba(255,255,255,.76); font-size: 14px; font-weight: 400; }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: var(--radius-btn);
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      border: 0;
+      font-size: 13px;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - 56px);
+    }
+    .sidebar {
+      position: sticky;
+      top: 56px;
+      align-self: start;
+      height: calc(100vh - 56px);
+      padding: 16px 14px;
+      background: #fff;
+      border-right: 1px solid var(--border);
+      overflow: auto;
+    }
+    .project-card {
+      padding: 14px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f7f9ff, #fff);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .project-card strong { display: block; font-size: 14px; }
+    .progress { height: 8px; border-radius: 999px; background: #e6ebf5; overflow: hidden; }
+    .progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-primary), var(--brand-interactive)); width: var(--w, 60%); transition: width .6s ease; }
+    .nav { display: grid; gap: 6px; }
+    .nav button {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .nav button.active, .nav button:hover { background: var(--brand-light); color: var(--brand-primary); }
+    .main { padding: 24px; overflow: hidden; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, .7fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+    .hero-card, .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-1);
+    }
+    .hero-card { padding: 24px; background: linear-gradient(135deg, #fff, #f4f7ff); }
+    h1, h2, h3 { margin: 0; line-height: 1.35; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; margin-bottom: 14px; }
+    h3 { font-size: 16px; margin-bottom: 10px; }
+    p { margin: 0; color: var(--muted); }
+    .muted { color: var(--soft); font-size: 13px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .badge { display: inline-flex; align-items: center; border-radius: 5px; padding: 3px 8px; font-size: 12px; font-weight: 650; background: var(--brand-light); color: var(--brand-primary); }
+    .badge.gold { background: #fff8e2; color: #7a5a00; }
+    .badge.success { background: #e7f6ee; color: #007a36; }
+    .badge.warning { background: #fff0e5; color: #b34a00; }
+    .badge.danger { background: #fde7e7; color: var(--danger); }
+    .module { display: none; animation: fade .25s ease; }
+    .module.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .grid { display: grid; gap: 16px; }
+    .grid.kpi { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card { padding: 18px; }
+    .metric { font-size: 32px; font-weight: 800; color: var(--brand-primary); letter-spacing: -.02em; }
+    .metric small { font-size: 16px; color: var(--muted); }
+    .trend { margin-top: 8px; font-size: 12px; color: var(--success); }
+    .chart-box { min-height: 270px; display: grid; place-items: center; background: linear-gradient(180deg, #fff, #f8faff); border-radius: 8px; border: 1px solid #eef1f6; }
+    .heatmap { display: grid; grid-template-columns: repeat(6, 48px); gap: 8px; }
+    .heatmap span { height: 38px; border-radius: 6px; display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 700; }
+    .donut { width: 180px; height: 180px; border-radius: 50%; background: conic-gradient(var(--success) 0 52%, var(--warning) 52% 78%, var(--danger) 78% 91%, #ccd3df 91%); display: grid; place-items: center; }
+    .donut div { width: 104px; height: 104px; border-radius: 50%; background: #fff; display: grid; place-items: center; text-align: center; font-weight: 800; color: var(--brand-primary); }
+    .bars { display: grid; gap: 12px; width: 100%; }
+    .bar-row { display: grid; grid-template-columns: 140px 1fr 42px; gap: 10px; align-items: center; font-size: 13px; }
+    .bar { height: 10px; background: #e8edf5; border-radius: 999px; overflow: hidden; }
+    .bar span { display: block; height: 100%; background: var(--brand-interactive); border-radius: inherit; width: var(--w); }
+    .table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table th, .table td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; }
+    .table th { color: var(--muted); background: #f8fafc; font-weight: 700; }
+    .tree { position: relative; min-height: 320px; width: 100%; }
+    .node { position: absolute; min-width: 120px; padding: 9px 12px; border-radius: 999px; text-align: center; font-size: 12px; font-weight: 700; background: #fff; border: 2px solid var(--brand-light); box-shadow: var(--shadow-1); cursor: pointer; }
+    .node.root { left: 42%; top: 18px; background: var(--brand-primary); color: #fff; border-color: var(--brand-primary); }
+    .node.n1 { left: 12%; top: 105px; border-color: var(--danger); color: var(--danger); }
+    .node.n2 { left: 43%; top: 115px; border-color: var(--warning); color: var(--warning); }
+    .node.n3 { right: 10%; top: 105px; border-color: var(--success); color: var(--success); }
+    .node.n4 { left: 6%; top: 230px; }
+    .node.n5 { left: 28%; top: 230px; }
+    .node.n6 { left: 52%; top: 230px; }
+    .node.n7 { right: 6%; top: 230px; }
+    .link-line { position: absolute; height: 2px; background: #ccd7e8; transform-origin: left center; }
+    .line1 { left: 45%; top: 82px; width: 245px; transform: rotate(160deg); }
+    .line2 { left: 49%; top: 82px; width: 150px; transform: rotate(88deg); }
+    .line3 { left: 53%; top: 82px; width: 245px; transform: rotate(20deg); }
+    .control-panel { display: grid; gap: 14px; }
+    .field label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 13px; font-weight: 700; }
+    .field select, .field input[type="range"] { width: 100%; }
+    .option-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { border: 1px solid var(--border); border-radius: 999px; padding: 7px 10px; background: #fff; font-size: 12px; cursor: pointer; }
+    .chip.active { border-color: var(--brand-interactive); color: var(--brand-primary); background: var(--brand-light); }
+    .btn { border: 0; border-radius: var(--radius-btn); padding: 10px 14px; background: var(--brand-interactive); color: #fff; font-weight: 700; cursor: pointer; box-shadow: var(--shadow-1); }
+    .btn.secondary { background: var(--brand-light); color: var(--brand-primary); }
+    .btn.gold { background: var(--gold); }
+    .btn:disabled { opacity: .65; cursor: wait; }
+    .explain { border-left: 4px solid var(--gold); background: #fffdf7; padding: 14px; border-radius: 8px; }
+    .result-card { border: 1px dashed #cfd8ea; background: #fbfdff; border-radius: 8px; padding: 14px; min-height: 92px; }
+    .loader { display: none; gap: 12px; align-items: center; }
+    .loader.active { display: flex; }
+    .spinner { width: 30px; height: 30px; border-radius: 50%; border: 3px solid #d9e3f7; border-top-color: var(--brand-interactive); animation: spin .85s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .animated-progress { height: 8px; background: #e8edf5; border-radius: 999px; overflow: hidden; margin-top: 10px; }
+    .animated-progress span { display: block; width: 40%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand-primary), var(--gold)); animation: loading 1.2s ease-in-out infinite; }
+    @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(260%); } }
+    .impact-network { position: relative; min-height: 300px; width: 100%; overflow: hidden; }
+    .impact-network::before { content: ""; position: absolute; inset: 24px; border-radius: 50%; border: 1px dashed #d8dfec; }
+    .impact-node { position: absolute; display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 800; text-align: center; border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,.15); }
+    .impact-node.core { left: 45%; top: 42%; width: 84px; height: 84px; background: var(--warning); animation: pulse 1.6s infinite; }
+    .impact-node.a { left: 18%; top: 18%; width: 70px; height: 70px; background: var(--danger); }
+    .impact-node.b { right: 18%; top: 20%; width: 68px; height: 68px; background: var(--brand-interactive); }
+    .impact-node.c { left: 24%; bottom: 15%; width: 58px; height: 58px; background: var(--success); }
+    .impact-node.d { right: 24%; bottom: 12%; width: 60px; height: 60px; background: var(--pending); }
+    @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,107,0,.35); } 50% { transform: scale(1.06); box-shadow: 0 0 0 18px rgba(255,107,0,0); } }
+    .timeline { display: grid; gap: 12px; }
+    .timeline-item { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: start; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+    .dot { width: 20px; height: 20px; border-radius: 50%; background: var(--brand-interactive); margin-top: 2px; }
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      color: #fff;
+      font-size: 18px;
+      box-shadow: var(--shadow-2);
+      cursor: pointer;
+      display: none;
+    }
+    .back-top.show { display: block; }
+    .toast {
+      position: fixed;
+      right: 22px;
+      top: 72px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      box-shadow: var(--shadow-2);
+      padding: 12px 14px;
+      max-width: 340px;
+      display: none;
+      z-index: 80;
+    }
+    .toast.show { display: block; animation: fade .2s ease; }
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: 0; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+      .nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero, .grid.two, .grid.three, .grid.kpi { grid-template-columns: 1fr; }
+      .topbar { padding: 0 14px; }
+      .top-actions { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" id="top">
+    <div class="brand">LuminFlow <span class="crumb">/ Interactive Consultant Demo</span></div>
+    <div class="top-actions">
+      <span class="pill">English UI</span>
+      <span class="pill">Quick Tour</span>
+      <span class="pill">AI Assistant Preview</span>
+      <span class="pill">Zhang Ming · Audit Manager</span>
+    </div>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="project-card">
+        <strong>FY2025 Annual Audit</strong>
+        <span class="muted">ABC Technology Co., Ltd.</span>
+        <div class="progress" style="margin-top:12px"><span style="--w:65%"></span></div>
+        <div class="muted" style="margin-top:6px">Demo progress: 65%</div>
+      </div>
+      <nav class="nav" aria-label="Demo modules">
+        <button class="active" data-target="dashboard">Dashboard</button>
+        <button data-target="objective">Audit Objectives</button>
+        <button data-target="sampling">Sampling Preview</button>
+        <button data-target="impact">Impact Simulation</button>
+        <button data-target="team">Team Management</button>
+      </nav>
+
+    </aside>
+
+    <main class="main">
+      <section class="hero" aria-label="overview">
+        <div class="hero-card">
+          <h1>LuminFlow Audit Management System — Interactive Demo</h1>
+          <p style="margin-top:10px">This page allows consultants to experience core workflows without a backend service. All backend capabilities use preset mock data, with a 1–3 second processing animation played after each interaction before displaying simulated results.</p>
+          <div class="badges">
+            <span class="badge">Dashboard</span>
+            <span class="badge">Objective Graph</span>
+            <span class="badge">Smart Sampling</span>
+            <span class="badge gold">AI Impact Simulator</span>
+            <span class="badge success">Role-based Collaboration</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Global Capabilities</h3>
+          <p>Default English UI with Chinese language toggle; the AI Assistant reads the current page route and user role context to generate page-relevant explanations, recommendations, and review prompts.</p>
+          <div class="grid" style="margin-top:14px">
+            <button class="btn secondary" onclick="activateModule('sampling')">Try Smart Sampling</button>
+            <button class="btn secondary" onclick="activateModule('impact')">Try Impact Simulation</button>
+            <button class="btn secondary" onclick="activateModule('team')">Try Approval Workflow</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="module active" id="dashboard">
+        <div class="section-title"><h2>Dashboard</h2><span class="badge">Audit Cockpit</span></div>
+        <div class="grid kpi">
+          <div class="card"><p>Overall Audit Progress</p><div class="metric">78<small>%</small></div><div class="trend">↑ on track</div></div>
+          <div class="card"><p>Control Coverage</p><div class="metric">92<small>%</small></div><div class="trend">stable</div></div>
+          <div class="card"><p>PBC Completion</p><div class="metric">68<small>%</small></div><div class="trend" style="color:var(--warning)">6 overdue items</div></div>
+          <div class="card"><p>Risk Score</p><div class="metric">6.2<small>/10</small></div><div class="trend" style="color:var(--danger)">requires attention</div></div>
+        </div>
+        <div class="grid two" style="margin-top:16px">
+          <div class="card"><h3>Risk Control Heatmap</h3><div class="chart-box"><div class="heatmap"><span style="background:#009a44">5.5</span><span style="background:#d32f2f">8.5</span><span style="background:#ff6b00">6.8</span><span style="background:#1e49e2">7.2</span><span style="background:#009a44">4.4</span><span style="background:#d32f2f">8.1</span><span style="background:#757575">5.8</span><span style="background:#ff6b00">7.6</span><span style="background:#1e49e2">6.3</span><span style="background:#009a44">4.9</span><span style="background:#d32f2f">8.9</span><span style="background:#757575">5.2</span></div></div></div>
+          <div class="card"><h3>Control Effectiveness Distribution</h3><div class="chart-box"><div class="donut"><div>12<br><span class="muted">controls</span></div></div></div></div>
+        </div>
+        <div class="grid two" style="margin-top:16px">
+          <div class="card"><h3>Pending Items</h3><table class="table"><tr><th>Item</th><th>Status</th><th>Owner</th></tr><tr><td>PBC-009 Authorization Ledger</td><td><span class="badge danger">Overdue</span></td><td>Client</td></tr><tr><td>CTRL-002 Remediation evidence</td><td><span class="badge warning">Review</span></td><td>Auditor</td></tr><tr><td>Partner review note</td><td><span class="badge">Pending</span></td><td>Partner</td></tr></table></div>
+          <div class="explain"><h3>Module Purpose & Value</h3><p>The Dashboard serves as the audit project cockpit, helping CFOs, Audit Managers, and Partners quickly identify progress, risks, PBC bottlenecks, and key action items — the decision entry point to all other modules.</p></div>
+        </div>
+      </section>
+
+      <section class="module" id="objective">
+        <div class="section-title"><h2>Audit Objectives</h2><button class="btn" data-run="objective">View Node Detail</button></div>
+        <div class="grid two">
+          <div class="card"><h3>Objective Tree</h3><div class="chart-box"><div class="tree"><span class="link-line line1"></span><span class="link-line line2"></span><span class="link-line line3"></span><button class="node root" data-run="objective">Loan Process</button><button class="node n1" data-run="objective">Credit Approval</button><button class="node n2" data-run="objective">Fund Usage</button><button class="node n3" data-run="objective">Post-loan Review</button><button class="node n4">CTRL-002</button><button class="node n5">CTRL-003</button><button class="node n6">CTRL-010</button><button class="node n7">Finding F-001</button></div></div></div>
+          <div class="grid">
+            <div class="card"><h3>COSO Coverage Radar</h3><div class="bars"><div class="bar-row"><span>Control Activities</span><div class="bar"><span style="--w:88%"></span></div><strong>88%</strong></div><div class="bar-row"><span>Risk Assessment</span><div class="bar"><span style="--w:76%"></span></div><strong>76%</strong></div><div class="bar-row"><span>Monitoring</span><div class="bar"><span style="--w:69%"></span></div><strong>69%</strong></div><div class="bar-row"><span>Information</span><div class="bar"><span style="--w:81%"></span></div><strong>81%</strong></div></div></div>
+            <div class="result-card" id="objective-result"><strong>AI Insight</strong><p class="muted">Click a tree node to view control details, risk rationale, and recommended priority.</p></div>
+          </div>
+        </div>
+        <div class="explain" style="margin-top:16px"><h3>Module Overview</h3><p>The Audit Objectives page visualizes relationships between objectives, risk areas, control points, and findings. Consultants can inspect test coverage, COSO mapping, and deficiency priorities by examining node details.</p></div>
+      </section>
+
+      <section class="module" id="sampling">
+        <div class="section-title"><h2>Sampling Preview</h2><button class="btn" data-run="sampling">Recalculate Sampling</button></div>
+        <div class="grid three">
+          <div class="card"><p>Recommended Sample Range</p><div class="metric">38-52</div><span class="badge success">Median 45</span></div>
+          <div class="card"><p>Population</p><div class="metric">1,247</div><span class="badge">Q1 2025</span></div>
+          <div class="card"><p>Confidence Level</p><div class="metric">92<small>%</small></div><span class="badge gold">Risk-weighted</span></div>
+        </div>
+        <div class="grid two" style="margin-top:16px">
+          <div class="card"><h3>Document Distribution</h3><div class="bars"><div class="bar-row"><span>Authorization</span><div class="bar"><span style="--w:45%"></span></div><strong>45%</strong></div><div class="bar-row"><span>Verification</span><div class="bar"><span style="--w:28%"></span></div><strong>28%</strong></div><div class="bar-row"><span>System Logs</span><div class="bar"><span style="--w:15%"></span></div><strong>15%</strong></div><div class="bar-row"><span>Reports</span><div class="bar"><span style="--w:12%"></span></div><strong>12%</strong></div></div></div>
+          <div class="card"><h3>Parameter Adjuster</h3><div class="control-panel"><div class="field"><label>Risk Threshold</label><input type="range" min="1" max="10" value="6" /></div><div class="field"><label>Confidence Level</label><input type="range" min="80" max="99" value="95" /></div><div class="field"><label>Elevated Risk Coefficient</label><input type="range" min="1" max="2" step=".1" value="1.2" /></div></div></div>
+        </div>
+        <div class="grid two" style="margin-top:16px">
+          <div class="result-card" id="sampling-result"><strong>AI Sampling Rationale</strong><p class="muted">Click Recalculate to simulate sample size computation, branch coverage, and high-risk control weighting logic.</p></div>
+          <div class="explain"><h3>Module Overview</h3><p>Smart Sampling generates sample size recommendations based on population, confidence level, RAWTC risk scores, prior-year deficiencies, and system changes — improving transparency and auditability of sampling rationale.</p></div>
+        </div>
+      </section>
+
+      <section class="module" id="impact">
+        <div class="section-title"><h2>Impact Simulation</h2><button class="btn" data-run="impact">Run Simulation</button></div>
+        <div class="grid two">
+          <div class="card"><h3>Change Event Configuration</h3><div class="control-panel"><div class="field"><label>Event Type</label><div class="option-row"><span class="chip active">Control Deficiency</span><span class="chip">Regulatory Change</span><span class="chip">IT System Change</span></div></div><div class="field"><label>Severity</label><input type="range" min="1" max="10" value="7" /></div><div class="field"><label>Affected Dimensions</label><div class="option-row"><span class="chip active">Financial Statements</span><span class="chip active">Operations</span><span class="chip">Compliance</span><span class="chip">Reputation</span></div></div></div></div>
+          <div class="card"><h3>Impact Network</h3><div class="impact-network"><div class="impact-node core">Control<br>Gap</div><div class="impact-node a">Residual<br>Risk</div><div class="impact-node b">Audit<br>Scope</div><div class="impact-node c">Sample<br>Size</div><div class="impact-node d">Timeline</div></div></div>
+        </div>
+        <div class="grid two" style="margin-top:16px">
+          <div class="result-card" id="impact-result"><strong>Simulation Result</strong><p class="muted">Click Run Simulation to display affected nodes, risk indicator changes, and mitigation recommendations.</p></div>
+          <div class="explain"><h3>Module Overview</h3><p>Impact Simulation converts control failures, organizational changes, regulatory changes, or IT changes into an impact network, helping consultants assess audit scope, sample size, timeline, and compensating controls.</p></div>
+        </div>
+      </section>
+
+      <section class="module" id="team">
+        <div class="section-title"><h2>Team Management</h2><button class="btn" data-run="team">Approve AI Output</button></div>
+        <div class="grid three">
+          <div class="card"><h3>Visibility Control</h3><p>Client visible: KPIs, PBC status, approved AI summaries</p><p>Audit team visible: workpapers, samples, deficiencies, test details</p><p>Partner visible: review comments, quality control, significant matters</p></div>
+          <div class="card"><h3>Client Interaction</h3><div class="bars"><div class="bar-row"><span>PBC Questions</span><div class="bar"><span style="--w:78%"></span></div><strong>78</strong></div><div class="bar-row"><span>AI Answers</span><div class="bar"><span style="--w:64%"></span></div><strong>64</strong></div><div class="bar-row"><span>Escalations</span><div class="bar"><span style="--w:16%"></span></div><strong>16</strong></div></div></div>
+          <div class="card"><h3>Evidence Checker</h3><table class="table"><tr><th>Evidence</th><th>Status</th></tr><tr><td>Authorization Ledger</td><td><span class="badge danger">Missing</span></td></tr><tr><td>Income Review WP</td><td><span class="badge warning">Needs Review</span></td></tr><tr><td>Model Report</td><td><span class="badge success">Ready</span></td></tr></table></div>
+        </div>
+        <div class="grid two" style="margin-top:16px">
+          <div class="result-card" id="team-result"><strong>Approval Workflow</strong><p class="muted">Click Approve to simulate AI initial screening, Audit Manager approval, Partner QC review, and client publish status.</p></div>
+          <div class="explain"><h3>Module Overview</h3><p>The Team Management page manages AI output approval, client visibility scope, evidence completeness, and hot-topic issues — ensuring transparent multi-role collaboration with clear permission boundaries.</p></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <button class="back-top" id="backTop" title="Back to Top">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const modules = [...document.querySelectorAll('.module')];
+    const navButtons = [...document.querySelectorAll('.nav button')];
+    const toast = document.getElementById('toast');
+    const backTop = document.getElementById('backTop');
+
+    function activateModule(id) {
+      modules.forEach(module => module.classList.toggle('active', module.id === id));
+      navButtons.forEach(button => button.classList.toggle('active', button.dataset.target === id));
+      document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast('Switched to ' + id + ' module.');
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function showProcessing(container, label) {
+      container.innerHTML = '<div class="loader active"><div class="spinner"></div><div><strong>' + label + '</strong><p class="muted">Processing preset mock data, please wait…</p><div class="animated-progress"><span></span></div></div></div>';
+    }
+
+    function runObjective() {
+      const target = document.getElementById('objective-result');
+      showProcessing(target, 'Loading control node detail');
+      setTimeout(() => {
+        target.innerHTML = '<strong>CTRL-002 Income Proof Review</strong><p>AI identified a high-risk execution deficiency: 5 deviations found in 25 samples (20% deviation rate). Recommend prioritizing cross-verification evidence and including this control in the high-risk review checklist.</p><div class="badges"><span class="badge danger">High Severity</span><span class="badge gold">Priority P1</span><span class="badge">COSO Principle 10</span></div>';
+        showToast('Node details loaded.');
+      }, 1200);
+    }
+
+    function runSampling() {
+      const target = document.getElementById('sampling-result');
+      showProcessing(target, 'Recalculating sampling plan');
+      setTimeout(() => {
+        target.innerHTML = '<strong>Simulation Result: Recommended 52 samples</strong><p>System raised confidence to 95%, applied 1.2× weight to RAWTC ≥ 6 controls, and added 5 extra samples for prior-year deficiency CTRL-002; branch coverage: 12/36 branches across all regions.</p><table class="table"><tr><th>Category</th><th>Samples</th><th>Rationale</th></tr><tr><td>Authorization</td><td>23</td><td>High transaction frequency</td></tr><tr><td>Verification</td><td>15</td><td>Prior-year deficiency</td></tr><tr><td>System logs</td><td>8</td><td>Automated control validation</td></tr><tr><td>Reports</td><td>6</td><td>Coverage completeness</td></tr></table>';
+        showToast('Smart sampling calculation complete.');
+      }, 1800);
+    }
+
+    function runImpact() {
+      const target = document.getElementById('impact-result');
+      showProcessing(target, 'Running cascading impact simulation');
+      setTimeout(() => {
+        target.innerHTML = '<strong>Simulation Result: 11 affected nodes and 8 impact chains identified</strong><table class="table"><tr><th>Dimension</th><th>Before</th><th>After</th><th>Delta</th></tr><tr><td>Residual Risk</td><td>31.8%</td><td>52.6%</td><td><span class="badge danger">+20.8%</span></td></tr><tr><td>Control Effectiveness</td><td>88.2%</td><td>75.6%</td><td><span class="badge warning">-12.6%</span></td></tr><tr><td>Audit Cost</td><td>Baseline</td><td>+18K</td><td><span class="badge warning">Increase</span></td></tr></table><p style="margin-top:10px">AI Recommendation: Immediately increase key control testing frequency, add compensating controls, and reassess inherent risk levels for affected processes.</p>';
+        showToast('Impact simulation results generated.');
+      }, 2300);
+    }
+
+    function runTeam() {
+      const target = document.getElementById('team-result');
+      showProcessing(target, 'Running AI approval workflow');
+      setTimeout(() => {
+        target.innerHTML = '<strong>Approval Workflow Simulated</strong><div class="timeline"><div class="timeline-item"><span class="dot"></span><div><b>AI Initial Screening</b><p class="muted">Identified sensitive wording and supplemented citation references.</p></div><span class="badge success">Done</span></div><div class="timeline-item"><span class="dot"></span><div><b>Audit Manager Approval</b><p class="muted">Confirmed content suitable for client communication.</p></div><span class="badge success">Approved</span></div><div class="timeline-item"><span class="dot"></span><div><b>Partner QC Review</b><p class="muted">Significant matters retained as internal only.</p></div><span class="badge gold">QC Passed</span></div></div>';
+        showToast('Approval workflow complete.');
+      }, 1600);
+    }
+
+    navButtons.forEach(button => button.addEventListener('click', () => activateModule(button.dataset.target)));
+    document.querySelectorAll('[data-run="objective"]').forEach(element => element.addEventListener('click', runObjective));
+    document.querySelector('[data-run="sampling"]').addEventListener('click', runSampling);
+    document.querySelector('[data-run="impact"]').addEventListener('click', runImpact);
+    document.querySelector('[data-run="team"]').addEventListener('click', runTeam);
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 400));
+  </script>
+</body>
+</html>

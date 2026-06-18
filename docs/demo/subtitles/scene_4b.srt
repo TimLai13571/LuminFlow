@@ -1,0 +1,9 @@
+1
+00:00:13,000 --> 00:00:18,000
+This comprehensive solution enhances the visualization level
+of internal control audits,
+
+2
+00:00:18,000 --> 00:00:22,864
+improves team collaboration efficiency,
+and builds an integrated management platform.

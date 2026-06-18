@@ -1,0 +1,112 @@
+[
+  {
+    "id": "historical_deficiency",
+    "name": "历史缺陷",
+    "nameKey": "heatlens.factor.historicalDeficiency",
+    "weight": 0.30,
+    "description": "基于过去3年审计发现的缺陷数量、严重程度和整改完成率",
+    "descriptionKey": "heatlens.factor.historicalDeficiency",
+    "impacts": [
+      { "controlId": "CTRL-001", "score": 3.5, "detail": "信用评分模型近3年有2次参数调整缺陷记录" },
+      { "controlId": "CTRL-002", "score": 8.0, "detail": "收入证明审核连续3年发现高偏差率(>15%)" },
+      { "controlId": "CTRL-003", "score": 5.5, "detail": "征信查询授权去年发现1次流程违规" },
+      { "controlId": "CTRL-004", "score": 7.5, "detail": "贷款审批授权近2年均有越权审批发现" },
+      { "controlId": "CTRL-005", "score": 3.0, "detail": "贷款用途监控仅有轻微文档缺失记录" },
+      { "controlId": "CTRL-006", "score": 4.5, "detail": "资金流向监控去年发现1次预警延迟" },
+      { "controlId": "CTRL-007", "score": 6.0, "detail": "关联方核查近2年发现3笔关联交易未及时识别" },
+      { "controlId": "CTRL-008", "score": 5.0, "detail": "异常交易识别模型去年存在误报率偏高问题" },
+      { "controlId": "CTRL-009", "score": 3.0, "detail": "客户回访记录基本完整，仅少量遗漏" },
+      { "controlId": "CTRL-010", "score": 6.5, "detail": "抵押物评估连续2年存在重估不及时问题" },
+      { "controlId": "CTRL-011", "score": 4.0, "detail": "逾期预警系统去年升级后规则覆盖有所提升" },
+      { "controlId": "CTRL-012", "score": 5.5, "detail": "风险分类调整存在滞后记录，上年度发现2次" }
+    ]
+  },
+  {
+    "id": "process_change",
+    "name": "流程变更",
+    "nameKey": "heatlens.factor.processChange",
+    "weight": 0.20,
+    "description": "审计期间业务流程变更的频率、幅度和影响范围",
+    "descriptionKey": "heatlens.factor.processChange",
+    "impacts": [
+      { "controlId": "CTRL-001", "score": 5.0, "detail": "信用评分模型参数Q1进行了优化调整" },
+      { "controlId": "CTRL-002", "score": 2.0, "detail": "收入证明审核流程本年度无变更" },
+      { "controlId": "CTRL-003", "score": 4.0, "detail": "征信查询授权书模板年初更新" },
+      { "controlId": "CTRL-004", "score": 6.5, "detail": "贷款审批权限矩阵Q1进行了组织架构调整" },
+      { "controlId": "CTRL-005", "score": 3.0, "detail": "贷款用途分类标准细微调整" },
+      { "controlId": "CTRL-006", "score": 2.5, "detail": "资金监控预警阈值小幅优化" },
+      { "controlId": "CTRL-007", "score": 4.0, "detail": "关联方识别规则更新以适配新监管要求" },
+      { "controlId": "CTRL-008", "score": 6.0, "detail": "异常交易模型特征工程重构" },
+      { "controlId": "CTRL-009", "score": 1.5, "detail": "客户回访流程未变更" },
+      { "controlId": "CTRL-010", "score": 4.5, "detail": "抵押物评估机构遴选标准更新" },
+      { "controlId": "CTRL-011", "score": 5.5, "detail": "逾期预警系统升级至v3.2版本" },
+      { "controlId": "CTRL-012", "score": 3.5, "detail": "五级分类实施细则Q1修订" }
+    ]
+  },
+  {
+    "id": "system_upgrade",
+    "name": "系统升级",
+    "nameKey": "heatlens.factor.systemUpgrade",
+    "weight": 0.18,
+    "description": "核心业务系统升级、迁移或架构变更的影响评估",
+    "descriptionKey": "heatlens.factor.systemUpgrade",
+    "impacts": [
+      { "controlId": "CTRL-001", "score": 6.0, "detail": "信用评分引擎从v2.1升级至v3.0" },
+      { "controlId": "CTRL-002", "score": 1.0, "detail": "收入证明审核仍为手工流程" },
+      { "controlId": "CTRL-003", "score": 3.0, "detail": "征信查询接口从人行v1升级至v2" },
+      { "controlId": "CTRL-004", "score": 5.0, "detail": "贷款审批系统数据库从Oracle迁移至分布式" },
+      { "controlId": "CTRL-005", "score": 2.0, "detail": "用途监控系统无重大变化" },
+      { "controlId": "CTRL-006", "score": 4.5, "detail": "资金流向监控平台新增实时流处理" },
+      { "controlId": "CTRL-007", "score": 3.5, "detail": "关联方识别知识图谱从Neo4j 3.x升级至4.x" },
+      { "controlId": "CTRL-008", "score": 7.0, "detail": "异常交易检测全面迁移至深度学习平台" },
+      { "controlId": "CTRL-009", "score": 1.0, "detail": "回访管理系统无变更" },
+      { "controlId": "CTRL-010", "score": 3.0, "detail": "抵押物估值数据接口标准化改造" },
+      { "controlId": "CTRL-011", "score": 5.0, "detail": "预警引擎从规则引擎升级为ML混合引擎" },
+      { "controlId": "CTRL-012", "score": 2.0, "detail": "风险分类系统日常维护更新" }
+    ]
+  },
+  {
+    "id": "regulatory_rule",
+    "name": "监管法规",
+    "nameKey": "heatlens.factor.regulatoryRule",
+    "weight": 0.17,
+    "description": "新颁布或修订的监管法规对控制点合规要求的影响",
+    "descriptionKey": "heatlens.factor.regulatoryRule",
+    "impacts": [
+      { "controlId": "CTRL-001", "score": 7.0, "detail": "银保监新规要求信用评分模型需年度独立验证" },
+      { "controlId": "CTRL-002", "score": 6.0, "detail": "个人金融信息保护法强化收入证明审核要求" },
+      { "controlId": "CTRL-003", "score": 7.5, "detail": "个人信息保护法对征信查询合规要求大幅提升" },
+      { "controlId": "CTRL-004", "score": 6.0, "detail": "商业银行互联网贷款新规对审批授权有新要求" },
+      { "controlId": "CTRL-005", "score": 5.5, "detail": "贷款用途监管新规要求穿透式监控" },
+      { "controlId": "CTRL-006", "score": 6.5, "detail": "反洗钱新规对资金流向监控提出更高标准" },
+      { "controlId": "CTRL-007", "score": 7.0, "detail": "关联交易管理办法2025修订版新增识别要求" },
+      { "controlId": "CTRL-008", "score": 5.5, "detail": "监管科技应用指引要求提升异常检测自动化水平" },
+      { "controlId": "CTRL-009", "score": 4.0, "detail": "消费者权益保护新规要求强化贷后回访" },
+      { "controlId": "CTRL-010", "score": 6.0, "detail": "抵押物估值新规要求独立第三方重估频率提高" },
+      { "controlId": "CTRL-011", "score": 5.5, "detail": "资产分类新规要求更精细化的预警机制" },
+      { "controlId": "CTRL-012", "score": 7.0, "detail": "金融资产分类新规(2025)对五级分类标准有重大影响" }
+    ]
+  },
+  {
+    "id": "regulatory_penalty",
+    "name": "监管处罚",
+    "nameKey": "heatlens.factor.regulatoryPenalty",
+    "weight": 0.15,
+    "description": "同业及自身监管处罚记录对相关控制点的警示评分",
+    "descriptionKey": "heatlens.factor.regulatoryPenalty",
+    "impacts": [
+      { "controlId": "CTRL-001", "score": 4.0, "detail": "同业有1起信用评分模型缺陷导致监管罚款案例" },
+      { "controlId": "CTRL-002", "score": 7.5, "detail": "近2年同业多起因收入证明审核不到位受罚案例" },
+      { "controlId": "CTRL-003", "score": 8.0, "detail": "个人信息违规查询为近年监管处罚最集中领域" },
+      { "controlId": "CTRL-004", "score": 6.5, "detail": "越权审批为银行业高频处罚事项" },
+      { "controlId": "CTRL-005", "score": 4.5, "detail": "贷款用途违规为监管重点，同业有3起大额处罚" },
+      { "controlId": "CTRL-006", "score": 5.0, "detail": "资金流向监控不到位导致反洗钱处罚案例增多" },
+      { "controlId": "CTRL-007", "score": 5.5, "detail": "关联交易违规处罚金额逐年上升" },
+      { "controlId": "CTRL-008", "score": 4.0, "detail": "异常交易识别失败导致的处罚案例相对较少" },
+      { "controlId": "CTRL-009", "score": 3.5, "detail": "贷后管理不到位为常规处罚事项" },
+      { "controlId": "CTRL-010", "score": 5.0, "detail": "抵押物估值虚高导致的风险事件在行业内有发生" },
+      { "controlId": "CTRL-011", "score": 4.5, "detail": "预警不及时导致的资产劣变案例有监管通报" },
+      { "controlId": "CTRL-012", "score": 6.0, "detail": "风险分类不准确为近年监管检查高频发现问题" }
+    ]
+  }
+]

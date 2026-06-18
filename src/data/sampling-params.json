@@ -1,0 +1,42 @@
+{
+  "currentPlan": {
+    "totalRange": { "min": 38, "max": 52, "median": 45 },
+    "confidence": 92,
+    "population": 1247,
+    "period": "2025-01-01 to 2025-03-31"
+  },
+  "documentDistribution": [
+    { "category": "授权审批类", "percentage": 45, "subTypes": ["信用审批表", "额度审批单", "授权委托书"], "controlMapping": ["CTRL-003", "CTRL-004", "CTRL-010"], "color": "#00338D" },
+    { "category": "验证核对类", "percentage": 28, "subTypes": ["收入证明", "银行流水", "征信报告"], "controlMapping": ["CTRL-002", "CTRL-005", "CTRL-007", "CTRL-009"], "color": "#1E49E2" },
+    { "category": "系统自动类", "percentage": 15, "subTypes": ["系统操作日志", "参数配置截图", "异常预警记录"], "controlMapping": ["CTRL-001", "CTRL-006", "CTRL-008"], "color": "#757575" },
+    { "category": "报告生成类", "percentage": 12, "subTypes": ["风险评估报告", "贷后检查报告", "分类调整记录"], "controlMapping": ["CTRL-011", "CTRL-012"], "color": "#9CA3AF" }
+  ],
+  "timeWindows": [
+    { "period": "1月", "percentage": 40, "color": "#00338D" },
+    { "period": "2月", "percentage": 35, "color": "#1E49E2" },
+    { "period": "3月", "percentage": 25, "color": "#E8EDF5" }
+  ],
+  "historicalTrend": [
+    { "year": 2022, "sampleSize": 38 },
+    { "year": 2023, "sampleSize": 42 },
+    { "year": 2024, "sampleSize": 45 },
+    { "year": 2025, "sampleSize": 52, "isPrediction": true }
+  ],
+  "elevatedControls": [
+    { "controlId": "CTRL-002", "controlName": "收入证明审核", "additionalSamples": 5, "reason": "上年发现执行缺陷(F-001)，瑕疵率20%" },
+    { "controlId": "CTRL-011", "controlName": "逾期预警监控", "additionalSamples": 3, "reason": "系统升级后流程变更，需验证新控制有效性" }
+  ],
+  "params": {
+    "riskThreshold": 6,
+    "confidenceLevel": 95,
+    "elevatedCoefficient": 1.2
+  },
+  "rationale": [
+    "基于PCAOB AS 2315抽样标准，结合银行个贷业务特征确定样本量",
+    "总体规模1247笔中抽取45笔（中位数），置信水平92%，可容忍偏差率5%",
+    "对RAWTC≥6的高风险控制点加权抽样，系数1.2倍",
+    "上年缺陷控制(CTRL-002)额外增加5笔样本覆盖",
+    "系统升级涉及控制(CTRL-011)额外增加3笔验证",
+    "分行抽样覆盖12/36家，涵盖所有区域，确保代表性"
+  ]
+}

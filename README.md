@@ -181,7 +181,8 @@ LuminFlow/
 ├── package.json                  # 前端依赖与 npm scripts
 ├── server/requirements.txt       # 后端 Python 依赖
 ├── .env.example                  # 环境变量模板
-├── DEPLOY.md                     # 详细部署说明
+├── docs/
+│   └── DEPLOY.md                 # 详细部署说明
 ├── 一键启动.bat                   # Windows 一键启动脚本
 └── README.md                     # 本文件
 ```
@@ -239,7 +240,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 | `DEEPSEEK_BASE_URL` | 否 | DeepSeek API 地址，默认官方地址 |
 | `ARK_API_KEY` | 否 | 火山方舟 API Key（Seedance 视频生成） |
 
-详细部署说明请参阅 [DEPLOY.md](./DEPLOY.md)。
+详细部署说明请参阅 [DEPLOY.md](./docs/DEPLOY.md)。
 
 ---
 
